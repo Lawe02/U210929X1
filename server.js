@@ -1,29 +1,11 @@
-'use strict'
+const express = require('express')
+const app = express()
+const port = 3000
 
-const http = require('http');
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-const fs = require('fs')
-
-const server = http.createServer();
-
-server.on('request',(req,res) => {
-    
-    fs.readFile('index.httml', function (err, data) {
-         
-         res.statusCode = 200;
-         res.setHeader('Content-Length', data.length);
-         res.setHeader('Contetnt type', 'text/html');
-         res.write(data);
-         res.end();
-      });
-
-});
-
-
-const PORT = process.env.PORT || 8042;
-
- 
-server.listen(PORT);
-
-console.log(`Server up and listening on port ${PORT}`);
- 
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
