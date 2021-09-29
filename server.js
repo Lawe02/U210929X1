@@ -6,8 +6,14 @@ const fs = requiere ('fs')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hellooooooo')
+app.get('/app.html', (req, res) => {
+  fs.readFile('app.html',(err, data) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Length', data.length);
+    res.write(data);
+
+  })
+    
 })
 
 app.listen(port, () => {
