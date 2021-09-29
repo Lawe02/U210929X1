@@ -11,7 +11,7 @@ app.get('/app.html', (req, res) => {
 
     res.setHeader('Content-Type', 'text/html');
     res.setHeader('Content-Length', data.length);
-    res.write(data);
+    res.send(data);
 
   })
     
